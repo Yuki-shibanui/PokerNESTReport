@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker NEST 日報文</title>
+
+    <style>
+    body { font-family: Arial, sans-serif; }
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+    #ranking div, #searchResults div { 
+        cursor: pointer; 
+        padding: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #ranking div:hover, #searchResults div:hover { background-color: #f0f0f0; }
+    .deleteButton { 
+        background-color: red; 
+        color: white; 
+        border: none; 
+        cursor: pointer; 
+        margin-left: 10px; 
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    h2,p {
+        text-align: center;
+    }
+
+    form {
+        margin-bottom: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="submit"],
+    input[type="date"],
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"],
+    button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+
+    input[type="submit"]:hover,
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    label {
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    #ranking div,
+    #searchResults div {
+        padding: 10px;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    #ranking div:hover,
+    #searchResults div:hover {
+        background-color: #e9e9e9;
+    }
+
+    .deleteButton {
+        background-color: red;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .deleteButton:hover {
+        background-color: darkred;
+    }
+
+    #ranking,
+    #searchResults {
+        margin-top: 20px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+    }
+    input, button {
+        margin: 10px 0;
+    }
+
+    @media (min-width: 600px) {
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        input[type="submit"],
+        button {
+            width: auto;
+        }
+    }
+    </style>
+</head>  
+<body>
+    <h2>日報文</h2>
+    <p>日報文を記入してください。</p>    
+    <textarea id = "textarea" rows="10" cols="50"></textarea>
+    
+    <input type="date">
+    
+    <h2>営業時間</h2>
+    開始時間<input type="time" value= 開始時間>
+    終了時間<input type="time" value=終了時間>
+
+    <h2>出勤スタッフ</h2>
+    <p>出勤スタッフを選択してください。(複数選択可)</p>
+
+    <form>
+        <label>
+            <input type="checkbox"
+            name="staffs" value="もりお">　もりお
+            </label><br>
+            
+        <label>
+            <input type="checkbox"
+            name="staffs" value="えいと">　えいと
+            </label><br>
+        
+        <label>
+            <input type="checkbox"
+            name="staffs" value="もも">　もも
+            </label><br>
+
+        <label>
+            <input type="checkbox"
+            name="staffs" value="みさ">　みさ
+            </label><br>
+
+        <label>
+            <input type="checkbox"
+            name="staffs" value="つな">　つな
+            </label><br>
+                
+        <label>
+            <input type="checkbox"
+            name="staffs" value="ゆめ">　ゆめ
+            </label><br>
+            
+        <label>
+            <input type="checkbox"
+            name="staffs" value="きょてん">　きょてん
+            </label><br>
+    
+        <label>
+            <input type="checkbox"
+            name="staffs" value="はな">　はな
+            </label><br>
+        
+        <label>
+            <input type="checkbox"
+            name="staffs" value="ゆきや">　ゆきや
+            </label><br>
+                
+        <label>
+            <input type="checkbox"
+            name="staffs" value="トロ">　トロ
+            </label><br>
+            
+        <label>
+            <input type="checkbox"
+            name="staffs" value="暗黒の堕天使">　暗黒の堕天使
+            </label><br>
+    
+        <label>
+            <input type="checkbox"
+            name="staffs" value="るり">　るり
+            </label><br>
+        
+        <label>
+            <input type="checkbox"
+            name="staffs" value="ひかちゃむ‼">　ひかちゃむ‼
+            </label><br>
+                
+        <label>
+            <input type="checkbox"
+            name="staffs" value="よしの">　よしの
+            </label><br>
+            
+        <label>
+            <input type="checkbox"
+            name="staffs" value="かいと">　かいと
+            </label><br>
+    
+        <label>
+            <input type="checkbox"
+            name="staffs" value="あかり">　あかり
+            </label><br>
+        
+        <label>
+            <input type="checkbox"
+            name="staffs" value="ヘルプ">　ヘルプ
+            </label><br>
+
+    </form>
+
+    <h2>本日のトーナメントについて</h2>
+    <p>本日のトーナメントを選択してください。(複数選択可)</p>
+
+    <form>
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="昼サク">　昼サク
+            </label><br>
+
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="夜サク">　夜サク
+            </label><br>   
+    
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="ガチNEST CUP">　ガチNEST CUP
+            </label><br>   
+                 
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="TAKADAnoTOBA">　TAKADAnoTOBA
+            </label><br>   
+        
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="昼マルチ">　昼マルチ
+            </label><br>   
+
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="バウンティ">　バウンティ
+            </label><br>   
+        
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="夕マルチ">　夕マルチ
+            </label><br>   
+                     
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="ゆったりネスト">　ゆったりネスト
+            </label><br>   
+            
+        <label>
+            <input type="checkbox"
+            name="today tournament" value="TAKADAnoEDEN">　TAKADAnoEDEN
+            </label><br>
+            
+         <label>
+            <input type="checkbox"
+            name="today tournament"value=その他>　その他
+            <input type="text">
+            </label><br>
+    </form>
+
+    <h2>明日のトーナメントについて</h2>
+    <p>明日のトーナメントを選択してください。(複数選択可)</p>
+
+    <form>
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="昼サク">　昼サク
+            </label><br>
+
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="夜サク">　夜サク
+            </label><br>   
+    
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="ガチNEST CUP">　ガチNEST CUP
+            </label><br>   
+                 
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="TAKADAnoTOBA">　TAKADAnoTOBA
+            </label><br>   
+        
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="昼マルチ">　昼マルチ
+            </label><br>   
+
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="バウンティ">　バウンティ
+            </label><br>   
+        
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="夕マルチ">　夕マルチ
+            </label><br>   
+                     
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="ゆったりネスト">　ゆったりネスト
+            </label><br>   
+            
+        <label>
+            <input type="checkbox"
+            name="tomorrow tournament" value="TAKADAnoEDEN">　TAKADAnoEDEN
+            </label><br>
+            
+         <label>
+            <input type="checkbox"
+            name="tomorrow tournament"value=その他>　その他
+            <input type="text">
+            </label><br>
+    </form>
+
+    <h2>その他共有事項</h2>
+    <p>その他共有事項がある場合は記入してください。特にない場合は”特になし”を選択してください。</p>
+    
+    <form>
+        <label>
+            <input type="radio"
+            name = "share" value = "共有事項">　共有事項
+            <input type="text">
+            </label><br>
+
+        <label>
+            <input type="radio"
+            name = "share" value = "特になし"> 特になし
+            </label><br>
+    
+    </form>
+    
+    
+    <h2>カジノ純増ランキング計算ツール</h2>
+    <form onsubmit="addPerson(); return false;">
+        <label>名前を入力: <input type="text" id="nameInput" required></label><br>
+        <label>開始点数: <input type="number" id="startValue" required min="0" step="100"></label><br>
+        <label>終了点数: <input type="number" id="endValue" required min="0" step="100"></label><br>
+        <input type="submit" value="追加">
+    </form>
+    
+    <br>
+    <button onclick="clearData();">クリア</button>
+    <br>
+    
+    <label>名前検索: <input type="text" id="searchInput" oninput="searchPerson()"></label>
+    <div id="searchResults"></div>
+    
+    <h2>ランキング</h2>
+    <div id="ranking"></div>
+    <h2>日報作成</h2>
+    <p>日報を作成します</p>
+    <button id="combineButton">日報作成</button>
+
+    <div id="report"></div>
+
+    <script>
+        const localStorageKey = 'casinoRankings';
+        let idCounter = 0;
+        let currentId = null;
+        let rankingFlag = false;
+    
+        function addPerson() {
+            const nameInput = document.getElementById('nameInput').value.trim();
+            const startValue = +document.getElementById('startValue').value;
+            const endValue = +document.getElementById('endValue').value;
+    
+            if (startValue % 100 !== 0 || endValue % 100 !== 0) {
+                alert("開始点数と終了点数はそれぞれ100点単位である必要があります。");
+                return;
+            }
+    
+            let difference = endValue - startValue;
+            let rankings = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+    
+            if (rankingFlag) {
+                const existingPerson = rankings.find(person => person.id === currentId && person.name === nameInput);
+                if (existingPerson) {
+                    existingPerson.start = startValue;
+                    existingPerson.end = endValue;
+                    existingPerson.increase = difference;
+                }
+                rankingFlag = false;
+            }
+            else {
+                rankings.push({
+                    id: idCounter++,
+                    name: nameInput,
+                    start: startValue,
+                    end: endValue,
+                    increase: difference
+                });
+            }
+    
+            localStorage.setItem(localStorageKey, JSON.stringify(rankings));
+            clearForm();
+            displayRankings();
+        }
+    
+        function deletePerson(id) {
+            let rankings = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+            rankings = rankings.filter(person => person.id !== id);
+            localStorage.setItem(localStorageKey, JSON.stringify(rankings));
+            displayRankings();
+        }
+    
+        function displayRankings() {
+            const rankingsList = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+            rankingsList.sort((a, b) => b.increase - a.increase);
+            const rankingDiv = document.getElementById('ranking');
+            rankingDiv.innerHTML = '';
+    
+            rankingsList.forEach((person, index) => {
+                const personDiv = document.createElement('div');
+                personDiv.textContent = `${index + 1}. ${person.name} - 純増: ${person.increase}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = "削除";
+                deleteButton.className = 'deleteButton';
+                deleteButton.onclick = (event) => {
+                    event.stopPropagation();
+                    deletePerson(person.id);
+                };
+    
+                personDiv.appendChild(deleteButton);
+                personDiv.onclick = () => restoreInput(person);
+                rankingDiv.appendChild(personDiv);
+            });
+        }
+    
+        function restoreInput(person) {
+            rankingFlag = true;
+            currentId = person.id;
+            document.getElementById('nameInput').value = person.name;
+            document.getElementById('startValue').value = person.start;
+            document.getElementById('endValue').value = person.end;
+        }
+    
+        function clearData() {
+            localStorage.removeItem(localStorageKey);
+            displayRankings();
+        }
+        
+        function searchPerson() {
+            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            const rankingsList = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+            const searchResults = rankingsList.filter(person => person.name.toLowerCase().includes(searchTerm));
+    
+            const searchResultsDiv = document.getElementById('searchResults');
+            searchResultsDiv.innerHTML = '';
+    
+            searchResults.forEach(person => {
+                const personDiv = document.createElement('div');
+                personDiv.textContent = `${person.name} - 現在の点数: ${person.increase}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = "削除";
+                deleteButton.className = 'deleteButton';
+                deleteButton.onclick = (event) => {
+                    event.stopPropagation();
+                    deletePerson(person.id);
+                };
+    
+                personDiv.appendChild(deleteButton);
+                personDiv.onclick = () => restoreInput(person);
+                searchResultsDiv.appendChild(personDiv);
+            });
+        }
+    
+        function clearForm() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('startValue').value = '';
+            document.getElementById('endValue').value = '';
+        }
+        
+        window.onload = displayRankings;
+
+    function restoreInput(person) {
+        rankingFlag = true;
+        currentId = person.id;
+        document.getElementById('nameInput').value = person.name;
+		// 修正箇所
+        document.getElementById('startValue').value = person.end;
+        document.getElementById('endValue').value = '';
+    }
+
+    function makeReport() {
+        // 日付
+        const date = document.querySelector('input[type="date"]').value;
+
+        // 営業時間
+        const startTime = document.querySelector('input[value="開始時間"]').value;
+        const endTime = document.querySelector('input[value="終了時間"]').value;
+
+        // 出勤スタッフ
+        const staffCheckboxes = document.querySelectorAll('input[name="staffs"]:checked');
+        const staffList = Array.from(staffCheckboxes).map(checkbox => checkbox.value).join('、');
+
+        // 本日のトーナメント
+        const todayTournamentCheckboxes = document.querySelectorAll('input[name="today tournament"]:checked');
+        const todayTournamentList = Array.from(todayTournamentCheckboxes).map(checkbox => {
+            if (checkbox.value === 'その他') {
+                const textBox = checkbox.nextElementSibling;
+                return textBox.value.trim();
+            }
+            return checkbox.value;
+        }).join('、');
+
+        // 明日のトーナメント
+        const tomorrowTournamentCheckboxes = document.querySelectorAll('input[name="tomorrow tournament"]:checked');
+        const tomorrowTournamentList = Array.from(tomorrowTournamentCheckboxes).map(checkbox => {
+            if (checkbox.value === 'その他') {
+                const textBox = checkbox.nextElementSibling;
+                return textBox.value.trim();
+            }
+            return checkbox.value;
+        }).join('、');
+
+
+        // 共有事項
+        const shareInfoElement = document.querySelector('input[name="share"]:checked');
+        const shareInfo = shareInfoElement ? shareInfoElement.value : '特になし';
+        // const shareText = shareInfo === '共有事項' ? document.querySelector('input[type="text"]').value : '特にありません。';
+        let shareText = "特になし";
+        if (shareInfo === "共有事項") {
+            shareText = document.querySelector('input[name="share"]:checked').nextElementSibling.value.trim();
+        }
+
+        //日報文
+        const reportPassage = document.getElementById('textarea').value.replace(/\n/g,"<br>");
+
+        // ランキング情報
+        const rankings = JSON.parse(localStorage.getItem('casinoRankings')) || [];
+        // increase の降順にソートして上位10人を取得
+        const rankingText = rankings
+        .sort((a, b) => b.increase - a.increase)  // increase で降順ソート
+        .slice(0, 10)  // 上位10人を取得
+        .map((person, index) => `${person.name}   ${person.increase}`)
+        .join('<br>');
+
+        // 日報文の生成
+        const report = `
+            お疲れ様です。<br>
+            本日の日報です。<br><br>
+
+            ${date} 日報<br><br>
+
+            ■本日のトーナメントについて<br>
+            ${todayTournamentList}<br><br>
+
+            ■その他共有について<br>
+            ${shareText}<br><br>
+
+            ■営業について<br>
+            営業時間 ${startTime} ~ ${endTime}<br>
+            本日の出勤スタッフ<br>
+            ${staffList}<br><br>
+
+            日報<br>
+            ${reportPassage}<br><br>
+
+            【明日のトーナメント】<br>
+            ${tomorrowTournamentList}<br><br>
+
+            【リング純増ランキング】<br>
+            ${rankingText}<br><br>
+
+            本日もありがとうございました。
+        `;
+
+        // レポートをHTMLに表示
+        document.getElementById('report').innerHTML = report;
+    }
+    document.getElementById("combineButton").onclick = makeReport;
+
+    </script>
+
+
+
+</body>
+</html>
